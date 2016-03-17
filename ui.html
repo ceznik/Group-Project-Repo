@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Road Trip</title>
+		<!-- FIREBASE -->
+		<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>  -->
+		<!-- FOUNDATION CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.0/foundation.min.css">
+		<!-- LOCAL CSS -->
+		<link rel="stylesheet" href="assets/css/ui.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!-- NAVIGATION -->
+			<div class="top-bar" id="main-menu">
+				<div class="top-bar-left">
+					<ul class="dropdown menu" data-dropdown-menu>
+						<li class="menu-text">Fork the road</li>
+					</ul>
+				</div>
+				<div class="top-bar-right">
+					<ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+						<li class="has-submenu">
+							<a href="#">Menu</a>
+							<ul class="submenu menu vertical" data-submenu>
+								<li><a href="#">Hotels</a></li>
+								<li><a href="#">Food</a></li>
+								<li><a href="">Places</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Find</a></li>
+						<li><a href="index.html">Home</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="map"></div>
+		</div>
+		<!-- LIBRARIES -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.js"></script>
+		<script src="assets/javascript/ui.js"></script>
+		<!-- API KEY -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSPnFTB8lYlF0Es3PHb3iIK4HtpSUuRjA&callback=initMap"
+		async defer></script>
+		<script>
+		$(document).foundation();
+		</script>
+	</body>
+</html>

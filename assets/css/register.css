@@ -1,0 +1,108 @@
+* {
+margin: 0px;
+padding: 0px;
+list-style: 0px;
+text-decoration: none;
+}
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  font-weight: 200;
+  font-size: 20px;
+}
+#container {
+  width: 1920px;
+  margin: 0px auto;
+}
+/*NAVIGATION*/
+.top-bar {
+ background: rgba(0, 0, 0, 0.67); 
+}
+.top-bar ul {
+  background: rgba(0, 0, 0, 0.67); 
+}
+.top-bar ul li {
+  background: rgba(0, 0, 0, 0.67);  
+}
+.top-bar ul li a {
+  color: #fff; 
+}
+
+.menu-text {
+  color: #fff; 
+}
+@media only screen and (max-width: 40em) {
+.menu-text {
+  display: none !important; 
+} }
+
+@media only screen and (min-width: 40em) {
+.top-bar .menu:last-child {
+  border-left: 1px solid #4e4e4e; 
+}
+
+.top-bar .menu:first-child {
+  border-left: none; 
+}
+
+.top-bar .menu li:not(:last-child) {
+  border-right: 1px solid #4e4e4e; 
+} }
+.dropdown.menu .submenu {
+  border: none; 
+}
+.is-drilldown-submenu-parent > a::after {
+  border-color: transparent transparent transparent #fff; 
+}
+
+.js-drilldown-back::before {
+  border-color: transparent #fff transparent transparent; 
+}
+/* Styles for signup panels */
+.auth-plain {
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+.left-solid {
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+.signup-panel {
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 300px;
+  margin-bottom: 30px;
+  background: #fff;
+}
+
+.signup-panel a{
+  color: #fff;
+}
+
+.signup-panel i {
+  font-size: 30px;
+  line-height: 50px;
+  color: #999;
+}
+.signup-panel form input, .signup-panel form span {
+  height: 50px;
+}
+.signup-panel .welcome {
+  font-size: 26px;
+  text-align: center;
+  margin-left: 0;
+}
+.signup-panel p {
+  font-size: 13px;
+  font-weight: 200;
+  text-align: center;
+}
+.signup-panel .button {
+  margin-left: 35%;
+}
+
+.newusers {
+  background: #fff;
+}
