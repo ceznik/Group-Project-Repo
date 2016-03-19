@@ -1,91 +1,88 @@
-// alert("ready");
-////////////////////////////////////////////////////////////////////////////////////
-// GOOGLE MAPS EXAMPLE
 function initMap() {
-    var origin_place_id = null;
-    var destination_place_id = null;
-    var travel_mode = google.maps.TravelMode.WALKING;
-    var map = new google.maps.Map(document.getElementById('map'), {
-        mapTypeControl: false,
-        center: {
-            lat: 40.4862,
-            lng: -74.4518
-        },
-        zoom: 13
-    });
-    /////////////////////////////////////////////////////////////////////////////////
-    // GOOGLE MAPS DIRECTIONS 
-    var directionsService = new google.maps.DirectionsService;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
-    directionsDisplay.setMap(map);
-    var origin_input = document.getElementById('origin-input');
-    var destination_input = document.getElementById('destination-input');
-    var modes = document.getElementById('mode-selector');
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
-    var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
-    origin_autocomplete.bindTo('bounds', map);
-    var destination_autocomplete = new google.maps.places.Autocomplete(destination_input);
-    destination_autocomplete.bindTo('bounds', map);
+  var origin_place_id = null;
+  var destination_place_id = null;
+  var travel_mode = google.maps.TravelMode.DRIVING;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    mapTypeControl: false,
+    center: {lat: -33.8688, lng: 151.2195},
+    zoom: 13
+  });
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay.setMap(map);
 
-    function expandViewportToFitPlace(map, place) {
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);
-        }
-    }
-    origin_autocomplete.addListener('place_changed', function() {
-        var place = origin_autocomplete.getPlace();
-        if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
-            return;
-        }
-        expandViewportToFitPlace(map, place);
-        // If the place has a geometry, store its place ID and route if we have
-        // the other place ID
-        origin_place_id = place.place_id;
-        route(origin_place_id, destination_place_id, directionsService, directionsDisplay);
-    });
-    destination_autocomplete.addListener('place_changed', function() {
-        var place = destination_autocomplete.getPlace();
-        if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
-            return;
-        }
-        expandViewportToFitPlace(map, place);
-        // If the place has a geometry, store its place ID and route if we have
-        // the other place ID
-        destination_place_id = place.place_id;
-        route(origin_place_id, destination_place_id, directionsService, directionsDisplay);
-    });
+  var origin_input = document.getElementById('origin-input');
+  var destination_input = document.getElementById('destination-input');
+  var modes = document.getElementById('mode-selector');
 
-    function route(origin_place_id, destination_place_id, travel_mode, directionsService, directionsDisplay) {
-        if (!origin_place_id || !destination_place_id) {
-            return;
-        }
-        directionsService.route({
-            origin: {
-                'placeId': origin_place_id
-            },
-            destination: {
-                'placeId': destination_place_id
-            },
-            travelMode: travel_mode
-        }, function(response, status) {
-            if (status === google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
+
+  var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
+  origin_autocomplete.bindTo('bounds', map);
+  var destination_autocomplete =
+      new google.maps.places.Autocomplete(destination_input);
+  destination_autocomplete.bindTo('bounds', map);
+
+  function expandViewportToFitPlace(map, place) {
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    //GOOGLE SEARCH PLACES
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
+  }
+
+  origin_autocomplete.addListener('place_changed', function() {
+    var place = origin_autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("Autocomplete's returned place contains no geometry");
+      return;
+    }
+    expandViewportToFitPlace(map, place);
+
+    // If the place has a geometry, store its place ID and route if we have
+    // the other place ID
+    origin_place_id = place.place_id;
+    route(origin_place_id, destination_place_id, travel_mode,
+          directionsService, directionsDisplay);
+  });
+
+  destination_autocomplete.addListener('place_changed', function() {
+    var place = destination_autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("Autocomplete's returned place contains no geometry");
+      return;
+    }
+    expandViewportToFitPlace(map, place);
+
+    // If the place has a geometry, store its place ID and route if we have
+    // the other place ID
+    destination_place_id = place.place_id;
+    route(origin_place_id, destination_place_id, travel_mode,
+          directionsService, directionsDisplay);
+  });
+
+  function route(origin_place_id, destination_place_id, travel_mode,
+                 directionsService, directionsDisplay) {
+    if (!origin_place_id || !destination_place_id) {
+      return;
+    }
+    directionsService.route({
+      origin: {'placeId': origin_place_id},
+      destination: {'placeId': destination_place_id},
+      travelMode: travel_mode
+    }, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+  // 
+  var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     // Bias the SearchBox results towards current map's viewport.
@@ -130,27 +127,33 @@ function initMap() {
             }
         });
         map.fitBounds(bounds);
+    }); 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// GEOLOCATION
+     var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
     });
-    ///////////////////////////////////////////////////////////////////////////////////////
-    // LABELS
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var labelIndex = 0;
-    // This event listener calls addMarker() when the map is clicked.
-    google.maps.event.addListener(map, 'click', function(event) {
-        addMarker(event.latLng, map);
-    });
-    // Add a marker at the center of the map.
-    addMarker(bangalore, map);
-    // Adds a marker to the map.
-    function addMarker(location, map) {
-        // Add the marker at the clicked location, and add the next-available label
-        // from the array of alphabetical characters.
-        var marker = new google.maps.Marker({
-            position: location,
-            label: labels[labelIndex++ % labels.length],
-            map: map
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-    ///////////////////////////////////////////////////////////////////////////////////////
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
 }
