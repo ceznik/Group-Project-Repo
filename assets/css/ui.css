@@ -32,20 +32,6 @@ body {
 .menu-text {
   display: none !important; 
 } }
-
-@media only screen and (min-width: 40em) {
-.top-bar .menu:last-child {
-  border-left: 1px solid #4e4e4e; 
-}
-
-.top-bar .menu:first-child {
-  border-left: none; 
-}
-
-.top-bar .menu li:not(:last-child) {
-  border-right: 1px solid #4e4e4e; 
-} }
-
 /*GOOGLE MAP*/
 #map {
     position: absolute;
