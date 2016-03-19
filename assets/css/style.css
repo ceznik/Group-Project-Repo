@@ -15,7 +15,7 @@ body {
 }
 /*NAVIGATION*/
 .top-bar {
- position: fixed;
+ position: relative;
  width: 100%;
  background: rgba(0, 0, 0, 0.67); 
 }
@@ -28,8 +28,8 @@ body {
 .top-bar ul li a {
   color: #fff; 
 }
-
 .menu-text {
+  font-size: 25px;
   color: #fff; 
 }
 @media only screen and (max-width: 40em) {
@@ -49,16 +49,6 @@ body {
 .top-bar .menu li:not(:last-child) {
   border-right: 1px solid #4e4e4e; 
 } }
-.dropdown.menu .submenu {
-  border: none; 
-}
-.is-drilldown-submenu-parent > a::after {
-  border-color: transparent transparent transparent #fff; 
-}
-
-.js-drilldown-back::before {
-  border-color: transparent #fff transparent transparent; 
-}
 /*PARALLAX-BACKGROUND*/
 .parallax-background {
   height: 1020px;
@@ -69,10 +59,10 @@ body {
   color: transparent;
   font-size: 5rem;
   letter-spacing: 5px;
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, pink, skyblue);
+  border: 5px solid transparent;
+  border-image: linear-gradient(45deg, white, skyblue);
   border-image-slice: 1;
-  background: linear-gradient(45deg, white, skyblue);
+  background: linear-gradient(45deg, white, white);
   -webkit-background-clip: text;
   text-fill-color: transparent;
   transition: all 0.2s ease; 
@@ -127,6 +117,11 @@ body {
     text-align: center;
     font-size: 1.2rem;
     padding: 4rem; 
+  }
+  .footer img:hover{
+    background-color: white;
+    border-radius: 50px;
+
   }
   .footer p.slogan {
     color: #8d9093;

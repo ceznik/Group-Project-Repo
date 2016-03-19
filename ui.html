@@ -31,19 +31,24 @@
 								<li><a href="">Places</a></li>
 							</ul>
 						</li>
-						<li><a href="#">Find</a></li>
 						<li><a href="index.html">Home</a></li>
 					</ul>
 				</div>
 			</div>
+			<!-- MAP -->
+			<input id="origin-input" class="controls" type="text"
+			placeholder="Enter an origin location">
+			<input id="destination-input" class="controls" type="text"
+			placeholder="Enter a destination location">
 			<div id="map"></div>
+			<input id="pac-input" class="controls" type="text" placeholder="Search Places">
 		</div>
-		<!-- LIBRARIES -->
+		<!-- <! LIBRARIES -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.js"></script>
 		<script src="assets/javascript/ui.js"></script>
 		<!-- API KEY -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSPnFTB8lYlF0Es3PHb3iIK4HtpSUuRjA&callback=initMap"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSPnFTB8lYlF0Es3PHb3iIK4HtpSUuRjA&libraries=places,drawing&signed_in=true&callback=initMap"
 		async defer></script>
 		<script>
 		$(document).foundation();
