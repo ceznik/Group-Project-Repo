@@ -64,8 +64,7 @@ function initMap() {
           directionsService, directionsDisplay);
   });
 
-  function route(origin_place_id, destination_place_id, travel_mode,
-                 directionsService, directionsDisplay) {
+  function route(origin_place_id, destination_place_id, travel_mode, directionsService, directionsDisplay) {
     if (!origin_place_id || !destination_place_id) {
       return;
     }
@@ -141,7 +140,7 @@ function initMap() {
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('Location found. ROADTRIP!!!');
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
