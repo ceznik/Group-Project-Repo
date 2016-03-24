@@ -28,6 +28,9 @@ body {
 .top-bar ul li a {
   color: #fff; 
 }
+.top-bar a:hover {
+  border-bottom: solid 1px white;
+}
 .menu-text {
   font-size: 25px;
   color: #fff; 
