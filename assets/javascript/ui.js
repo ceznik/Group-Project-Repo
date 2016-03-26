@@ -13,7 +13,7 @@ function initMap() {
 
   var origin_input = document.getElementById('origin-input');
   var destination_input = document.getElementById('destination-input');
-  var modes = document.getElementById('mode-selector');
+  var modes = document.getElementById('pac-input');
 
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
